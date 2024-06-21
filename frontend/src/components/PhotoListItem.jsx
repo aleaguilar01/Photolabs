@@ -6,16 +6,16 @@ import TopicList from "./TopicList";
 
 
 
-const PhotoListItem = (props) => {
+const PhotoListItem = ({urls, user, location, ...rest}) => {
    return(
     <div className="photo-list__item">
-      <PhotoFavButton /> 
-      <img className="photo-list__image" src={props.urls.full}/>
+      <PhotoFavButton {...rest} /> 
+      <img className="photo-list__image" src={urls.full}/>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.user.profile}/>
+        <img className="photo-list__user-profile" src={user.profile}/>
         <div>
-          <p className="photo-list__user-info" >{props.user.name}</p>
-          <p className="photo-list__user-info photo-list__user-location">{props.location.city + ', ' + props.location.country}</p>
+          <p className="photo-list__user-info" >{user.name}</p>
+          <p className="photo-list__user-info photo-list__user-location">{location.city + ', ' + location.country}</p>
         </div>
       </div> 
     </div>

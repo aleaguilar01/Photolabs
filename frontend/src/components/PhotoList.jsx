@@ -2,13 +2,12 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
 
-const PhotoList = () => {
+const PhotoList = ( { photos, handleOnClickFav, listOfFavPhotos }) => {
   return (
     <ul className="photo-list">
-      {photos.map( (item, key) => <PhotoListItem {...item} key={key}/>)}
+      {photos.map( (item) => <PhotoListItem {...item} key={item.id} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos}/>)}
     </ul>
   );
 };
