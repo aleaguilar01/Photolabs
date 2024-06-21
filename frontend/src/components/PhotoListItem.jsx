@@ -2,6 +2,7 @@ import React from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+import TopicList from "./TopicList";
 
 
 
@@ -16,7 +17,6 @@ const PhotoListItem = (props) => {
           <p className="photo-list__user-info" >{props.user.name}</p>
           <p className="photo-list__user-info photo-list__user-location">{props.location.city + ', ' + props.location.country}</p>
         </div>
-
       </div> 
     </div>
   )
