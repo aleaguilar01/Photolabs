@@ -8,11 +8,10 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
 const PhotoListItem = ({urls, user, location, handleDisplayModal, ...rest}) => {
-
    return(
     <div className="photo-list__item">
       <PhotoFavButton {...rest} /> 
-      <img className="photo-list__image" onClick={() => {handleDisplayModal(rest.id)}} src={urls.full}/>
+      <img className="photo-list__image" onClick={() => {handleDisplayModal(rest.id, urls.full, rest.similar_photos)}} src={urls.full}/>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile}/>
         <div>

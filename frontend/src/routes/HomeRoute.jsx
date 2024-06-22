@@ -17,20 +17,20 @@ const HomeRoute = () =>{
   const handleOnClickFav = (photoId) => setListOfFavPhotos((prev) => {
     //validate existence in list
     if (prev.includes(photoId)) {
+       //if exists remove
       return prev.filter((id) => photoId !== id);
     } 
-    //if exists remove
-    return [...prev, photoId]
     //if it doesn´t exist add
+    return [...prev, photoId] 
   });
 
   
   /**
    * handles the display of a modal and captures the id of the picture clicked. 
    */
-  const handleDisplayModal = (id) => {
+  const handleDisplayModal = (id, largePhoto, similar_photos) => {
     setIsModalDisplayed(prev => !prev)
-    console.log(isModalDisplayed);
+    console.log(isModalDisplayed, id, largePhoto, similar_photos);
   }
 
   return(
