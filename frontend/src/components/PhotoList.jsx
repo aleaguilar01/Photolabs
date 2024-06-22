@@ -7,7 +7,7 @@ import PhotoListItem from "./PhotoListItem";
 const PhotoList = ( { photos, handleOnClickFav, listOfFavPhotos, handleDisplayModal }) => {
   return (
     <ul className="photo-list">
-      {photos.map( (item) => <PhotoListItem {...item} key={item.id} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} />)}
+      {photos.map( (photo) => <PhotoListItem photo={photo} key={photo.id} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} />)}
     </ul>
   );
 };

@@ -29,9 +29,14 @@ const HomeRoute = () =>{
   /**
    * handles the display of a modal and captures the id of the picture clicked. 
    */
-  const handleDisplayModal = (id, largePhoto, similar_photos) => {
+  const handleDisplayModal = (photo) => {
     setIsModalDisplayed(prev => !prev);
-    setSinglePhotoDetail(prev =>({id, largePhoto, similar_photos}))
+    if(photo){
+      setSinglePhotoDetail(prev =>({...photo}))
+    } else {
+      setSinglePhotoDetail(undefined)
+    }
+    
   }
 
 
@@ -39,7 +44,7 @@ const HomeRoute = () =>{
     <div className="home-route">
       <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
       <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} />
-      {isModalDisplayed && <PhotoDetailsModal handleDisplayModal={handleDisplayModal} singlePhotoDetail={singlePhotoDetail} />}
+      {singlePhotoDetail && <PhotoDetailsModal handleDisplayModal={handleDisplayModal} singlePhotoDetail={singlePhotoDetail} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos}/>}
     </div>
   )
 };
