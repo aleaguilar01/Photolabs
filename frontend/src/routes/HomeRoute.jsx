@@ -8,7 +8,7 @@ const HomeRoute = () =>{
   
   const [listOfFavPhotos, setListOfFavPhotos] = useState([]);
   const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
-  const [ selectedPhoto, setSelectedPhoto ] = useState(undefined);
+  const [ singlePhotoDetail, setSinglePhotoDetail ] = useState(undefined);
 
   /**
    * 
@@ -31,7 +31,7 @@ const HomeRoute = () =>{
    */
   const handleDisplayModal = (id, largePhoto, similar_photos) => {
     setIsModalDisplayed(prev => !prev);
-    setSelectedPhoto(prev =>({id, largePhoto, similar_photos}))
+    setSinglePhotoDetail(prev =>({id, largePhoto, similar_photos}))
   }
 
 
@@ -39,7 +39,7 @@ const HomeRoute = () =>{
     <div className="home-route">
       <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
       <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} />
-      {isModalDisplayed && <PhotoDetailsModal handleDisplayModal={handleDisplayModal} {...selectedPhoto }/>}
+      {isModalDisplayed && <PhotoDetailsModal handleDisplayModal={handleDisplayModal} singlePhotoDetail={singlePhotoDetail} />}
     </div>
   )
 };
