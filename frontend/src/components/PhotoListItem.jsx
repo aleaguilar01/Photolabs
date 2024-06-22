@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
-import TopicList from "./TopicList";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
+
 
 
 
 const PhotoListItem = ({urls, user, location, ...rest}) => {
+  const [ isModalDisplayed, setIsModalDisplay ] = useState(false);
+  const handleOnClick = () => {
+    setIsModalDisplay(true)
+    const selectedPhotoId = rest.id;
+  }
    return(
     <div className="photo-list__item">
       <PhotoFavButton {...rest} /> 
-      <img className="photo-list__image" src={urls.full}/>
+      <img className="photo-list__image" onClick={handleOnClick} src={urls.full}/>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile}/>
         <div>
@@ -18,6 +24,7 @@ const PhotoListItem = ({urls, user, location, ...rest}) => {
           <p className="photo-list__user-info photo-list__user-location">{location.city + ', ' + location.country}</p>
         </div>
       </div> 
+      {isModalDisplayed && <PhotoDetailsModal />}
     </div>
   )
 };
