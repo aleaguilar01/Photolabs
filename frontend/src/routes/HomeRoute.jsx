@@ -30,13 +30,14 @@ const HomeRoute = () =>{
    */
   const handleDisplayModal = (id) => {
     setIsModalDisplayed(prev => !prev)
+    console.log(isModalDisplayed);
   }
 
   return(
     <div className="home-route">
       <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
       <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} isModalDisplayed={isModalDisplayed}/>
-      {isModalDisplayed && <PhotoDetailsModal />}
+      {isModalDisplayed && <PhotoDetailsModal handleDisplayModal={handleDisplayModal}/>}
     </div>
   )
 };
