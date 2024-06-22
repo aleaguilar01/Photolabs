@@ -6,7 +6,8 @@ import photos from "mocks/photos";
 const HomeRoute = () =>{ 
   
   const [listOfFavPhotos, setListOfFavPhotos] = useState([]);
-  
+  const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
+
   /**
    * 
    * @param {*} photoId 
@@ -22,11 +23,19 @@ const HomeRoute = () =>{
     //if it doesn´t exist add
   });
 
+  
+  /**
+   * handles the display of a modal and captures the id of the picture clicked. 
+   */
+  const handleDisplayModal = () => {
+    setIsModalDisplayed(true)
+    const selectedPhotoId = photos.id;
+  }
 
   return(
-    <div className="ome-route">
+    <div className="home-route">
       <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
-      <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos}/>
+      <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} isModalDisplayed={isModalDisplayed}/>
     </div>
   )
 };
