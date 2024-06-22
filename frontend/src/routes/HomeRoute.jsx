@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import PhotoList from "components/PhotoList";
 import TopNavigation from "components/TopNavigationBar";
 import photos from "mocks/photos";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const HomeRoute = () =>{ 
   
@@ -27,15 +28,15 @@ const HomeRoute = () =>{
   /**
    * handles the display of a modal and captures the id of the picture clicked. 
    */
-  const handleDisplayModal = () => {
-    setIsModalDisplayed(true)
-    const selectedPhotoId = photos.id;
+  const handleDisplayModal = (id) => {
+    setIsModalDisplayed(prev => !prev)
   }
 
   return(
     <div className="home-route">
       <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
       <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} isModalDisplayed={isModalDisplayed}/>
+      {isModalDisplayed && <PhotoDetailsModal />}
     </div>
   )
 };
