@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState } from "react"
+import PhotoList from "components/PhotoList";
+import TopNavigation from "components/TopNavigationBar";
+import photos from "mocks/photos";
 
-import '../styles/HomeRoute.scss';
+const HomeRoute = () =>{ 
+  
+  const [listOfFavPhotos, setListOfFavPhotos] = useState([]);
+  const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
 
-const HomeRoute = () => {
-  return (
+  /**
+   * 
+   * @param {*} photoId 
+   * @returns List of Fav Photos
+   */
+  const handleOnClickFav = (photoId) => setListOfFavPhotos((prev) => {
+    //validate existence in list
+    if (prev.includes(photoId)) {
+      return prev.filter((id) => photoId !== id);
+    } 
+    //if exists remove
+    return [...prev, photoId]
+    //if it doesn´t exist add
+  });
+
+  
+  /**
+   * handles the display of a modal and captures the id of the picture clicked. 
+   */
+  const handleDisplayModal = () => {
+    setIsModalDisplayed(true)
+    const selectedPhotoId = photos.id;
+  }
+
+  return(
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigation listOfFavPhotos={listOfFavPhotos}/>
+      <PhotoList photos={photos} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} handleDisplayModal={handleDisplayModal} isModalDisplayed={isModalDisplayed}/>
     </div>
-  );
+  )
 };
 
 export default HomeRoute;
