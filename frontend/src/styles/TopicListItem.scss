@@ -9,6 +9,11 @@
   font-weight: 500;
   color: #2b2b2b;
 
+  &.--clicked {
+    color: blue;
+    text-decoration: underline;
+  }
+
   &:hover {
     text-decoration: overline;
     color: #111;

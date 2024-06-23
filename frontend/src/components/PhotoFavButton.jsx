@@ -5,7 +5,6 @@ import '../styles/PhotoFavButton.scss';
 
 
 function PhotoFavButton({id, handleOnClickFav, listOfFavPhotos}) {
-  console.log(listOfFavPhotos)
 
   const handleOnClick = () => {
     handleOnClickFav(id)

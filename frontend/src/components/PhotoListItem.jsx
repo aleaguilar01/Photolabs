@@ -9,7 +9,7 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoListItem = ({photo, handleOnClickFav, listOfFavPhotos, handleDisplayModal, isModal = false}) => {
    return(
-    <div className="photo-list__item">
+    <div className={!isModal ? "photo-list__item" : "photo-details-modal__images"}>
       <PhotoFavButton id={photo.id} handleOnClickFav={handleOnClickFav} listOfFavPhotos={listOfFavPhotos} /> 
       <img className={!isModal ? "photo-list__image" : "photo-details-modal__image"} onClick={() => {handleDisplayModal(photo)}} src={photo.urls.full}/>
       <div className={!isModal ? "photo-list__user-details" : "photo-details-modal__photographer-details"}>

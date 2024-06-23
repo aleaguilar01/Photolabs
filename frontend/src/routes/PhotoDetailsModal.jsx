@@ -7,7 +7,6 @@ import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({ handleDisplayModal, singlePhotoDetail, handleOnClickFav, listOfFavPhotos }) => {
   const similar_photos = Object.values(singlePhotoDetail.similar_photos);
-  console.log(similar_photos);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={()=> (handleDisplayModal())}>
