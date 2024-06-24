@@ -3,7 +3,7 @@ import photos from 'mocks/photos';
 
 import HomeRoute from 'routes/HomeRoute';
 import './App.scss';
-import useApplicationData from 'hooks/useAplicationData';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 // Note: Rendering a single component to build components in isolation
