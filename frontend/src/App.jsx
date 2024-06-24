@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import photos from 'mocks/photos';
 
 import HomeRoute from 'routes/HomeRoute';
 import './App.scss';
+import useApplicationData from 'hooks/useAplicationData';
 
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+
+  const { state, handleDisplayModal, handleOnClickFav } = useApplicationData();
+
   return (
     <div className="App">
-      <HomeRoute />
+      <HomeRoute listOfFavPhotos={state.listOfFavPhotos} photos={photos} handleOnClickFav={handleOnClickFav} handleDisplayModal={handleDisplayModal} singlePhotoDetail={state.singlePhotoDetail } />
     </div>
   );
 };
