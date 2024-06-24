@@ -1,47 +1,49 @@
-import React, { useState } from "react";
-
-const useApplicationData = () => {
-
-  const [state, setState] = useState(
-    {listOfFavPhotos:[],
-      singlePhotoDetail: undefined
-    }
-  );
+import { getByDisplayValue } from "@testing-library/react";
+import React, { useState, useReducer } from "react";
 
 
-    /**
-   * 
-   * @param {*} photoId 
-   * @returns List of Fav Photos
-   */
-  const handleOnClickFav = (photoId) => setState((prev) => {
+const initialState = {
+  listOfFavPhotos: [],
+  singlePhotoDetail: undefined
+}
+
+const reducers = (state, action) => {
+  if (action.type === "handleOnClickFav") {
+ 
     //validate existence in list
-    if (prev.listOfFavPhotos.includes(photoId)) {
-       //if exists remove
-      return {...prev, listOfFavPhotos: prev.listOfFavPhotos.filter((id) => photoId !== id)};
-    } 
-    //if it doesn´t exist add
-    return {...prev, listOfFavPhotos: [...prev.listOfFavPhotos, photoId]} 
-  });
-
-    /**
-   * handles the display of a modal and captures the data of the picture clicked. 
-   * Also handles the close modal. 
-   */
-    const handleDisplayModal = (photo) => {
-      if(photo){
-        setState(prev=> ({...prev, singlePhotoDetail: {...photo}}))
-      } else {
-        setState(prev=> ({...prev, singlePhotoDetail: undefined}))
-      }
-      
+    if (state.listOfFavPhotos.includes(action.photoId)) {
+      //if exists remove
+      return { ...state, listOfFavPhotos: state.listOfFavPhotos.filter((id) => action.photoId !== id) };
     }
+    //if it doesn´t exist add
+    return { ...state, listOfFavPhotos: [...state.listOfFavPhotos, action.photoId] }
+  };
 
-  return {
-    state,
-    handleOnClickFav,
-    handleDisplayModal,
+  if (action.type === "handleDisplayModal") {
+     
+    if (action.photo) {
+      return { ...state, singlePhotoDetail: { ...action.photo } }
+    } else {
+      return { ...state, singlePhotoDetail: undefined }
+    }
+  }
+
+  if (action.type === "default") {
+    return state;
   }
 }
 
-export default useApplicationData;
+const useApplicationData = () => {
+  const [state, dispatch] = useReducer(reducers, initialState);
+
+  const handleOnClickFav = (photoId) => {
+    dispatch({ type: "handleOnClickFav", photoId});
+  }
+
+  const handleDisplayModal = (photo) => {
+    dispatch({type:"handleDisplayModal", photo });
+  }
+
+  return {state, handleOnClickFav, handleDisplayModal};
+}
+

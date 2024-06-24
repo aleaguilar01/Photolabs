@@ -5,10 +5,9 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const HomeRoute = (props) =>{ 
 
-
   return(
     <div className="home-route">
-      <TopNavigation listOfFavPhotos={props.listOfFavPhotos}/>
+      <TopNavigation listOfFavPhotos={props.listOfFavPhotos} topics={props.topics}/>
       <PhotoList photos={props.photos} handleOnClickFav={props.handleOnClickFav} listOfFavPhotos={props.listOfFavPhotos} handleDisplayModal={props.handleDisplayModal} />
       {props.singlePhotoDetail && <PhotoDetailsModal handleDisplayModal={props.handleDisplayModal} singlePhotoDetail={props.singlePhotoDetail} handleOnClickFav={props.handleOnClickFav} listOfFavPhotos={props.listOfFavPhotos}/>}
     </div>
