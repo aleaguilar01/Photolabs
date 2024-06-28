@@ -6,7 +6,7 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
 
-
+//Component to display a single photo.
 const PhotoListItem = ({photo, handleOnClickFav, listOfFavPhotos, handleDisplayModal, isModal = false}) => {
    return(
     <div className={!isModal ? "photo-list__item" : "photo-details-modal__images"}>

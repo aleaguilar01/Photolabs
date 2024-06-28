@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../styles/TopicListItem.scss";
 
 
-
+//Component to display each topic, 
 const TopicListItem = (props) => {
   const [isClicked, setIsClicked] = useState(false)
 

@@ -4,6 +4,7 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
+//Component to display the NavBar. 
 const TopNavigation = (props) => {
   const favListLenght = props.listOfFavPhotos.length;
   return (

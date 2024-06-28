@@ -3,6 +3,7 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
+// Component that displays FavBadge to signal the existence of favorite photos.
 const FavBadge = ({ isFavPhotoExist }) => {
   return (
     <div className='fav-badge'>

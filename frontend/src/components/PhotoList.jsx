@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-
+//Component that displays an array of photos.
 const PhotoList = ( { photos, handleOnClickFav, listOfFavPhotos, handleDisplayModal }) => {
   return (
     <ul className="photo-list">

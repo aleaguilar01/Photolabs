@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-
+// Component that displays a like button on each photo.
 function PhotoFavButton({id, handleOnClickFav, listOfFavPhotos}) {
 
   const handleOnClick = () => {
