@@ -51,15 +51,20 @@ const useApplicationData = () => {
   useEffect(() => {
     axios.get('/api/photos', { baseURL: API_URL })
       .then(({ data }) => { dispatch({ type: SET_PHOTO_DATA, data}) })
-      .catch(new Error('Fail fetching photos.'))
+      .catch(()=> {throw new Error('Fail fetching photos.')})
 
   }, [])
 
   useEffect(() => {
     axios.get('/api/topics', { baseURL: API_URL })
       .then(({ data }) => { dispatch({ type: SET_TOPIC_DATA, data}) })
-      .catch(new Error('Fail fetching topics.'))
+      .catch(() => {new Error('Fail fetching topics.')})
   }, [])
+
+  const handleOnClickTopic = (topicId) => {
+    axios.get(`/api/topics/photos/${topicId}`, {baseURL: API_URL})
+    .then(({ data }) => { dispatch({ type: SET_PHOTO_DATA, data}) })
+  }
 
   const handleOnClickFav = (photoId) => {
     dispatch({ type: HANDLE_ON_CLICK_FAV, photoId });
@@ -68,7 +73,7 @@ const useApplicationData = () => {
   const handleDisplayModal = (photo) => {
     dispatch({ type: HANDLE_DISPLAY_MODAL, photo });
   }
-  return { state, handleOnClickFav, handleDisplayModal };
+  return { state, handleOnClickFav, handleDisplayModal, handleOnClickTopic };
 }
 
 

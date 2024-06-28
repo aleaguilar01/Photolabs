@@ -9,6 +9,7 @@ const TopicListItem = (props) => {
 
   const handleOnClick = () => {
   setIsClicked(true)
+  props.handleOnClickTopic(props.id)
 };
 
   return (

@@ -7,10 +7,10 @@ import useApplicationData from 'hooks/useApplicationData';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const { state, handleDisplayModal, handleOnClickFav } = useApplicationData();
+  const { state, handleDisplayModal, handleOnClickFav, handleOnClickTopic } = useApplicationData();
   return (
     <div className="App">
-      <HomeRoute listOfFavPhotos={state.listOfFavPhotos} topics ={state.topicData} photos={state.photoData} handleOnClickFav={handleOnClickFav} handleDisplayModal={handleDisplayModal} singlePhotoDetail={state.singlePhotoDetail } />
+      <HomeRoute listOfFavPhotos={state.listOfFavPhotos} topics ={state.topicData} photos={state.photoData} handleOnClickFav={handleOnClickFav} handleDisplayModal={handleDisplayModal} handleOnClickTopic={handleOnClickTopic} singlePhotoDetail={state.singlePhotoDetail } />
     </div>
   );
 };
