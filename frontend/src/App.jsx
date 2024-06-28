@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import photos from 'mocks/photos';
-import topics from "mocks/topics";
-
 import HomeRoute from 'routes/HomeRoute';
 import './App.scss';
 import useApplicationData from 'hooks/useApplicationData';
@@ -13,7 +10,7 @@ const App = () => {
   const { state, handleDisplayModal, handleOnClickFav } = useApplicationData();
   return (
     <div className="App">
-      <HomeRoute listOfFavPhotos={state.listOfFavPhotos} topics ={topics} photos={photos} handleOnClickFav={handleOnClickFav} handleDisplayModal={handleDisplayModal} singlePhotoDetail={state.singlePhotoDetail } />
+      <HomeRoute listOfFavPhotos={state.listOfFavPhotos} topics ={state.topicData} photos={state.photoData} handleOnClickFav={handleOnClickFav} handleDisplayModal={handleDisplayModal} singlePhotoDetail={state.singlePhotoDetail } />
     </div>
   );
 };
