@@ -40,7 +40,7 @@ const reducers = (state, action) => {
         return {...state, topicData: action.data}
 
     default:
-      throw new Error(`Unsupported action type: ${action.type}`)
+      return state;
   }
 };
 
@@ -51,12 +51,14 @@ const useApplicationData = () => {
   useEffect(() => {
     axios.get('/api/photos', { baseURL: API_URL })
       .then(({ data }) => { dispatch({ type: SET_PHOTO_DATA, data}) })
+      .catch(new Error('Fail fetching photos.'))
 
   }, [])
 
   useEffect(() => {
     axios.get('/api/topics', { baseURL: API_URL })
       .then(({ data }) => { dispatch({ type: SET_TOPIC_DATA, data}) })
+      .catch(new Error('Fail fetching topics.'))
   }, [])
 
   const handleOnClickFav = (photoId) => {
