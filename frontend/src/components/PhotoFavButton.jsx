@@ -1,19 +1,18 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
 // Component that displays a like button on each photo.
-function PhotoFavButton({id, handleOnClickFav, listOfFavPhotos}) {
-
+function PhotoFavButton({ id, handleOnClickFav, listOfFavPhotos }) {
   const handleOnClick = () => {
-    handleOnClickFav(id)
-  }
+    handleOnClickFav(id);
+  };
 
   return (
     <div className="photo-list__fav-icon" onClick={handleOnClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected ={listOfFavPhotos.includes(id)}/>
+        <FavIcon selected={listOfFavPhotos.includes(id)} />
       </div>
     </div>
   );
