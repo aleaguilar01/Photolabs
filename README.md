@@ -34,13 +34,13 @@ The PhotoLabs project for the Web Development React course programming.
 ## Screenshots
 
 - Photolabs
-!["Photolabs"]()
+!["Photolabs"](https://github.com/aleaguilar01/Photolabs/blob/main/Docs/Photolabs.png?raw=true)
 
 - Modal
-!["Modal"]()
+!["Modal"](https://github.com/aleaguilar01/Photolabs/blob/main/Docs/PictureModal.png?raw=true)
 
 - Topics
-!["Topics"]()
+!["Topics"](https://github.com/aleaguilar01/Photolabs/blob/main/Docs/topics.png?raw=true)
 
 
 ## [Frontend] Running Webpack Development Server
