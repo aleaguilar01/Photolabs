@@ -64,7 +64,15 @@ const useApplicationData = () => {
   const handleDisplayModal = (photo) => {
     dispatch({ type: ACTIONS.HANDLE_DISPLAY_MODAL, photo });
   };
-  return { state, handleOnClickFav, handleDisplayModal, handleOnClickTopic, handleOnSearch, refresh };
+
+  const handleNewPhoto = (data) => {
+    console.log(data);
+    axios.post('/api/photos', data, { baseURL: API_URL })
+    .then(()=> refresh())
+  }
+
+  return { state, handleOnClickFav, handleDisplayModal, handleOnClickTopic, handleOnSearch, refresh, handleNewPhoto }
+
 };
 
 export default useApplicationData;

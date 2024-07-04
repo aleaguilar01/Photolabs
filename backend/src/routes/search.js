@@ -15,8 +15,8 @@ module.exports = (db) => {
           json_build_object(
           'id', photo.id,
           'urls', json_build_object(
-            'full', concat('${serverUrl}/images/', photo.full_url),
-            'regular', concat('${serverUrl}/images/', photo.regular_url)
+            'full', (CASE WHEN photo.full_url LIKE 'http%' THEN photo.full_url ELSE concat('${serverUrl}/images/', photo.full_url) END),
+            'regular', (CASE WHEN photo.regular_url LIKE 'http%' THEN photo.regular_url ELSE concat('${serverUrl}/images/', photo.regular_url) END)
           ),
           'user', json_build_object(
             'username', user_account.username,
@@ -33,8 +33,8 @@ module.exports = (db) => {
                 json_build_object(
                   'id', similar_photo.id,
                   'urls', json_build_object(
-                    'full', concat('${serverUrl}/images/', similar_photo.full_url),
-                    'regular', concat('${serverUrl}/images/', similar_photo.regular_url)
+                    'full', (CASE WHEN similar_photo.full_url LIKE 'http%' THEN similar_photo.full_url ELSE concat('${serverUrl}/images/', similar_photo.full_url) END),
+                    'regular',(CASE WHEN similar_photo.regular_url LIKE 'http%' THEN similar_photo.regular_url ELSE concat('${serverUrl}/images/', similar_photo.regular_url) END)
                   ),
                   'user', json_build_object(
                     'username', similar_user_account.username,

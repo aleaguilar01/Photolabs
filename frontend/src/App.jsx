@@ -4,7 +4,7 @@ import "./App.scss";
 import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
-  const { state, handleDisplayModal, handleOnClickFav, handleOnClickTopic, handleOnSearch, refresh } =
+  const { state, handleDisplayModal, handleOnClickFav, handleOnClickTopic, handleOnSearch, refresh, handleNewPhoto } =
     useApplicationData();
   return (
     <div className="App">
@@ -18,6 +18,7 @@ const App = () => {
         singlePhotoDetail={state.singlePhotoDetail}
         handleOnSearch ={handleOnSearch}
         refresh={refresh}
+        handleNewPhoto={handleNewPhoto}
       />
     </div>
   );
