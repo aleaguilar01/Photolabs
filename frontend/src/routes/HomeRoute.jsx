@@ -10,6 +10,8 @@ const HomeRoute = (props) => {
         listOfFavPhotos={props.listOfFavPhotos}
         topics={props.topics}
         handleOnClickTopic={props.handleOnClickTopic}
+        handleOnSearch={props.handleOnSearch}
+        refresh={props.refresh}
       />
       <PhotoList
         photos={props.photos}

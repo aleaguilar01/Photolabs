@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_URL } from "constants";
 import reducers from "./reducers";
 import { ACTIONS } from "constants";
+import Search from "components/Search";
 
 const initialState = {
   photoData: [],
@@ -31,6 +32,13 @@ const useApplicationData = () => {
       });
   }, []);
 
+  const refresh = () => {
+    axios.get("/api/photos", { baseURL: API_URL })
+    .then(({ data }) => {
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, data });
+    })
+    ;
+  }
   // Handle click on a topic
   const handleOnClickTopic = (topicId) => {
     axios
@@ -40,6 +48,13 @@ const useApplicationData = () => {
       });
   };
 
+  const handleOnSearch = (searchValue) => {
+    axios
+      .get(`/api/search/${searchValue}`, { baseURL: API_URL })
+      .then(({ data }) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, data: data ?? []});
+      });
+  }
   // Handle click on a favorite photo
   const handleOnClickFav = (photoId) => {
     dispatch({ type: ACTIONS.HANDLE_ON_CLICK_FAV, photoId });
@@ -49,7 +64,7 @@ const useApplicationData = () => {
   const handleDisplayModal = (photo) => {
     dispatch({ type: ACTIONS.HANDLE_DISPLAY_MODAL, photo });
   };
-  return { state, handleOnClickFav, handleDisplayModal, handleOnClickTopic };
+  return { state, handleOnClickFav, handleDisplayModal, handleOnClickTopic, handleOnSearch, refresh };
 };
 
 export default useApplicationData;
